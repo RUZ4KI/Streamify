@@ -56,6 +56,7 @@ export function BarChart() {
             margin={{
               left: 5,
             }}
+            className="mx-auto aspect-square max-w-72"
           >
             <YAxis
               dataKey="songName"

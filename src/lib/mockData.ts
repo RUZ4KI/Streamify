@@ -1,6 +1,8 @@
 // Types for Streamify Dashboard Data
 
 // Key Metrics Interface
+import topArtistProfile from "../assets/taylor swift.webp";
+
 export interface KeyMetrics {
   totalUsers: number;
   activeUsers: number;
@@ -37,6 +39,13 @@ export interface RecentStreamDataPoint {
   userId: string;
 }
 
+export interface TopArtist {
+  name: string;
+  streams: number;
+  imageUrl: string;
+  genre: string;
+}
+
 // Mock Data Generation
 export const mockKeyMetrics: KeyMetrics = {
   totalUsers: 5250000,
@@ -44,6 +53,13 @@ export const mockKeyMetrics: KeyMetrics = {
   totalStreams: 425000000,
   revenue: 42500000,
   topArtist: "Taylor Swift",
+};
+
+export const mockTopArtist: TopArtist = {
+  name: "Taylor Swift",
+  streams: 1234567,
+  imageUrl: topArtistProfile,
+  genre: "Pop",
 };
 
 export const mockUserGrowthData: UserGrowthDataPoint[] = [

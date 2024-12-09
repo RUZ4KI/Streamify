@@ -1,5 +1,4 @@
 import useZustandStore from "@/store/useStore";
-import topArtistProfile from "@/assets/taylor swift.webp";
 import { SidebarInset, SidebarTrigger } from "../ui/sidebar";
 import { SidebarProvider } from "../ui/sidebar";
 import { AppSidebar } from "../app-sidebar";
@@ -25,18 +24,14 @@ function Dashboard() {
   const totalRevenue = useZustandStore.use.totalRevenue();
   const activeUsers = useZustandStore.use.activeUsers();
   const totalStreams = useZustandStore.use.totalStreams();
-  const topArtist = {
-    name: "Taylor Swift",
-    streams: 1234567,
-    imageUrl: topArtistProfile,
-    genre: "Pop",
-  };
+  const topArtist = useZustandStore.use.topArtist();
+
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset className="flex flex-col">
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-2 px-4">
+        <header className="flex h-16 md:h-16 shrink-0 items-center gap-2 border-b">
+          <div className="flex items-center gap-2 px-2 md:px-4">
             <SidebarTrigger className="-ml-1" />
             <Separator orientation="vertical" className="mr-2 h-4" />
             <Breadcrumb>
@@ -53,8 +48,8 @@ function Dashboard() {
           </div>
         </header>
         <main className="flex-1 overflow-y-auto">
-          <div className="flex flex-col gap-6 p-4">
-            <div className="grid gap-4 md:grid-cols-4">
+          <div className="w-full flex flex-col gap-4 p-2 md:p-4 max-w-[100vw] overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
               <div className="rounded-xl bg-muted/50">
                 <UserCard
                   title="Total Revenue"
@@ -97,8 +92,13 @@ function Dashboard() {
                 </div>
               </div>
             </div>
-            <div className="rounded-xl bg-muted/50 p-4">
-              <DataTable columns={columns} data={dashboardData} />
+
+            <div className="rounded-xl bg-muted/50">
+              <div className="w-full overflow-x-auto">
+                <div className="p-2 md:p-4 min-w-full">
+                  <DataTable columns={columns} data={dashboardData} />
+                </div>
+              </div>
             </div>
           </div>
         </main>

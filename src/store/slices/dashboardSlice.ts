@@ -3,6 +3,7 @@ import {
   mockKeyMetrics,
   mockRecentStreamsData,
   mockRevenueDistributionData,
+  mockTopArtist,
   mockTopStreamedSongsData,
   mockUserGrowthData,
   RevenueDistributionDataPoint,
@@ -17,6 +18,13 @@ export interface DashboardData {
   userId: string;
 }
 
+export interface TopArtist {
+  name: string;
+  streams: number;
+  imageUrl: string;
+  genre: string;
+}
+
 export interface DashboardSlice {
   dashboardData: Array<DashboardData>;
   totalRevenue: number;
@@ -27,7 +35,8 @@ export interface DashboardSlice {
   barChart: Array<TopStreamedSongDataPoint>;
   isLoading: boolean;
   error: string | null;
-  setDashboardData: (data: DashboardData) => void;
+  topArtist: TopArtist;
+  setDashboardData: (data: Array<DashboardData>) => void;
   clearDashboardData: () => void;
   setError: (error: string | null) => void;
   setLoading: (loading: boolean) => void;
@@ -43,8 +52,9 @@ export const createDashboardSlice: StateCreator<DashboardSlice> = (set) => ({
   barChart: mockTopStreamedSongsData,
   isLoading: false,
   error: null,
+  topArtist: mockTopArtist,
   setDashboardData: (data) => set({ dashboardData: data, error: null }),
-  clearDashboardData: () => set({ dashboardData: null }),
+  clearDashboardData: () => set({ dashboardData: [] }),
   setError: (error) => set({ error }),
   setLoading: (loading) => set({ isLoading: loading }),
 });
