@@ -23,6 +23,7 @@ import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import useZustandStore from "@/store/useStore";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -34,6 +35,7 @@ function Login() {
   const navigate = useNavigate();
   const { toast } = useToast();
   const setEmail = useZustandStore.use.setEmail();
+  const isMobile = useIsMobile();
 
   const [authing, setAuthing] = useState(false);
 
@@ -95,14 +97,22 @@ function Login() {
   };
 
   return (
-    <div className="w-full h-screen flex">
-      <div className="w-1/2 h-full flex flex-col bg-[#282c34] items-center justify-center"></div>
+    <div className="w-full h-screen flex flex-col md:flex-row">
+      <div
+        className={`${
+          isMobile ? "hidden" : "w-1/2"
+        } h-full flex flex-col bg-[#282c34] items-center justify-center`}
+      ></div>
 
-      <div className="w-1/2 h-full flex flex-col p-20 justify-center">
+      <div
+        className={`${
+          isMobile ? "w-full" : "w-1/2"
+        } h-full flex flex-col p-6 md:p-20 justify-center`}
+      >
         <div className="w-full flex flex-col max-w-[450px] mx-auto">
           <div className="w-full flex flex-col mb-10 text">
-            <h3 className="text-4xl font-bold mb-2">Login</h3>
-            <p className="text-lg mb-4">
+            <h3 className="text-3xl md:text-4xl font-bold mb-2">Login</h3>
+            <p className="text-base md:text-lg mb-4">
               Welcome Back! Please enter your details.
             </p>
           </div>
@@ -144,20 +154,26 @@ function Login() {
               </Button>
             </form>
           </Form>
-          <div className="flex items-center gap-4 my-8">
+          <div className="flex items-center gap-4 my-6 md:my-8">
             <Separator className="flex-1" />
-            <span className="text-lg text-muted-foreground">OR</span>
+            <span className="text-base md:text-lg text-muted-foreground">
+              OR
+            </span>
             <Separator className="flex-1" />
           </div>
-          <Button onClick={signInWithGoogle} disabled={authing}>
+          <Button
+            onClick={signInWithGoogle}
+            disabled={authing}
+            className="w-full"
+          >
             Log In With Google
           </Button>
         </div>
 
-        <div className="w-full flex items-center justify-center mt-10">
+        <div className="w-full flex items-center justify-center mt-6 md:mt-10">
           <p className="text-sm font-normal text-gray-400">
             Don't have an account?{" "}
-            <span className="font-semibold  text-gray-800 cursor-pointer underline">
+            <span className="font-semibold text-gray-800 cursor-pointer underline">
               <a href="/signup">Sign Up</a>
             </span>
           </p>

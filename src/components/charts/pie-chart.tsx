@@ -56,7 +56,10 @@ export function PieChart() {
         <CardDescription>January - December 2024</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0 flex">
-        <ChartContainer config={chartConfig} className="mx-auto aspect-square">
+        <ChartContainer
+          config={chartConfig}
+          className="mx-auto aspect-square max-w-72"
+        >
           <RePieChart>
             <ChartTooltip
               cursor={false}
