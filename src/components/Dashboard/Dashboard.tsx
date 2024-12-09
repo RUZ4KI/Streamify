@@ -19,6 +19,7 @@ import { PieChart } from "../Charts/pie-chart";
 import { BarChart } from "../Charts/bar-chart";
 import { columns } from "../Table/columns";
 import { DataTable } from "../Table/data-table";
+
 function Dashboard() {
   const dashboardData = useZustandStore.use.dashboardData();
   const totalRevenue = useZustandStore.use.totalRevenue();
