@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Signup from "@/components/Login/SignUp";
 import Login from "@/components/Login/Login";
 import Dashboard from "@/components/Dashboard/Dashboard";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/use-auth";
 
 export const AllRoutes = () => {
   const { isAuthenticated, isLoading } = useAuth();
