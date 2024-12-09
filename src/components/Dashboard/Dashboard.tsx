@@ -14,9 +14,9 @@ import {
 } from "../ui/breadcrumb";
 import UserCard from "../user-card";
 import TopArtistCard from "../top-artist-card";
-import { LineChart } from "../Charts/line-chart";
-import { PieChart } from "../Charts/pie-chart";
-import { BarChart } from "../Charts/bar-chart";
+import { LineChart } from "../Charts/LineChart";
+import { PieChart } from "../Charts/PieChart";
+import { BarChart } from "../Charts/BarChart";
 import { columns } from "../Table/columns";
 import { DataTable } from "../Table/data-table";
 
